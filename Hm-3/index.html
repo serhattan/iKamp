@@ -8,7 +8,6 @@
 </head>
 <body>
 	<div class="container">
-		<button id="clearButton" onclick="clearScreen();" type="button" class="btn-info">(C) Temizle</button>
 		<div class="calculatorScreen">
 			<div class="row">
 				<p id="screen"></p>
@@ -16,6 +15,9 @@
 			</div>
 		</div>
 		<div class="calculatorBody">
+			<div class="row">
+			<button id="clearButton" onclick="clearScreen();" type="button" class="btn-info">Clear</button>
+			</div>
 			<div class="row">
 				<button type="button" class="btn btn-info">1</button>
 				<button type="button" class="btn btn-info">2</button>
@@ -37,7 +39,7 @@
 			<div class="row">
 				<button type="button" class="btn btn-info">0</button>
 				<button type="button" class="btn btn-info">.</button>
-				<button id="0" onclick="calculate()" type="button" class="btn btn-danger">=</button>
+				<button id="equalButton" type="button" class="btn btn-danger">=</button>
 				<button type="button" class="btn btn-primary operator">/</button>
 			</div>
 		</div>

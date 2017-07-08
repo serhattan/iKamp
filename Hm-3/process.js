@@ -5,12 +5,10 @@
 
 
 var classname = document.getElementsByClassName("btn");
-
-//To store clicked button's number
 var digits = [];
-var operand = "";
-var result;
+
 digitProcess = function(e) {
+	console.log("digitprocess kısmındasın");
 	// e.target.innerHTML is the button's number like 5, 6 
 	digits.push(e.target.innerHTML);
 	var number = digits.join("");
@@ -18,8 +16,10 @@ digitProcess = function(e) {
 };
 
 calculate = function() {
-	data = document.getElementById("screen").innerHTML;
-	
+	console.log("calculate kısmındasın");
+	var screen = document.getElementById("screen");
+	data = screen.innerHTML;
+
 	// Gets the first index where a operand occours
 	if (data.indexOf("+")!=-1) {
 		var index = data.indexOf("+");
@@ -34,16 +34,17 @@ calculate = function() {
 		var index = data.indexOf("/");
 		operation = "division";
 	}
-	// Gets the first part
-	var number1 = data.substr(0, index);
-	// Gets the second part
-	var number2 = data.substr(index + 1);
-
+	var number1 = data.substr(0, index); // Gets the first part
+	var number2 = data.substr(index + 1).slice(0, -1); // Gets the second part
+	console.log(data);
+	console.log(number1);
+	console.log(number2);
 	var calculator = new Calculator();
 	result = calculator[operation](number1, number2);
-	document.getElementById("resultScreen").innerHTML= result;
+	screen.innerHTML = result;
+	digits = [];
+	digits.push(result);
 }
-console.log(document.getElementById("screen").innerHTML);
 
 clearScreen = function() {
 	digits = [];
@@ -55,3 +56,7 @@ clearScreen = function() {
 for (var i = 0; i < classname.length; i++) {
 	classname[i].addEventListener('click', digitProcess, false);
 }
+
+
+var equalButton = document.getElementById("equalButton");
+equalButton.addEventListener('click', calculate, false);
