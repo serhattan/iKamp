@@ -1,6 +1,7 @@
 //Listening the some dom elements and fetch their values
 //Calling operations function from Calculator class
 //Sending values to operations function parameters
+//Clear screen with click function event
 
 
 
@@ -8,7 +9,6 @@ var classname = document.getElementsByClassName("btn");
 var digits = [];
 
 digitProcess = function(e) {
-	console.log("digitprocess kısmındasın");
 	// e.target.innerHTML is the button's number like 5, 6 
 	digits.push(e.target.innerHTML);
 	var number = digits.join("");
@@ -16,7 +16,6 @@ digitProcess = function(e) {
 };
 
 calculate = function() {
-	console.log("calculate kısmındasın");
 	var screen = document.getElementById("screen");
 	data = screen.innerHTML;
 
@@ -36,9 +35,7 @@ calculate = function() {
 	}
 	var number1 = data.substr(0, index); // Gets the first part
 	var number2 = data.substr(index + 1).slice(0, -1); // Gets the second part
-	console.log(data);
-	console.log(number1);
-	console.log(number2);
+
 	var calculator = new Calculator();
 	result = calculator[operation](number1, number2);
 	screen.innerHTML = result;
@@ -48,8 +45,7 @@ calculate = function() {
 
 clearScreen = function() {
 	digits = [];
-	document.getElementById("screen").innerHTML= " ";
-	document.getElementById("resultScreen").innerHTML= " ";
+	document.getElementById("screen").innerHTML= "";
 }
 
 //getElementsByClassName("btn-info") return array like object
@@ -60,3 +56,6 @@ for (var i = 0; i < classname.length; i++) {
 
 var equalButton = document.getElementById("equalButton");
 equalButton.addEventListener('click', calculate, false);
+
+var clearButton = document.getElementById("clearButton");
+clearButton.addEventListener('click', clearScreen, false);
